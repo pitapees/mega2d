@@ -1,19 +1,10 @@
+local utils = require("utils")
+
+local buttons
+
 function love.load()
-    buttons = {}
-    local rows, cols = 5, 5
-    local buttonW, buttonH = 100, 40
-    local spacing = 10
-    for i = 0, rows - 1 do
-        for j = 0, cols - 1 do
-            table.insert(buttons, {
-                x = j * (buttonW + spacing),
-                y = i * (buttonH + spacing),
-                w = buttonW,
-                h = buttonH,
-                label = "Btn " .. (i * cols + j + 1)
-            })
-        end
-    end
+    buttons = utils.buttons.createButtons(12)
+    utils.layouts.gridLayout(buttons, 5, 5, 100, 50, 10)
 end
 
 function love.update(dt)
